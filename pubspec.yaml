@@ -42,6 +42,7 @@ dependencies:
   flutter_animate: ^4.5.0
   dynamic_appbar: ^1.0.4
   flutter_staggered_grid_view: ^0.7.0
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,11 @@ flutter:
     - assets/images/n.webp
     - assets/images/background.gif
     - assets/images/mo.webp
+    - assets/images/giphy (1).webp
+    - assets/images/giphy (2).webp
+    - assets/images/tumblr_cb576de941c5e56b91b071700f94a703_e0eadfec_540.webp
+    - assets/images/tumblr_eccb7edddaba09d76503723dd331b882_98fee8c0_540.webp
+    - assets/images/h.webp
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
