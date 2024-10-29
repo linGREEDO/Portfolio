@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'haku.dart';
+import '../service/launcher.dart';
 
 class HeroSection extends StatelessWidget {
   final GlobalKey scrollKey;
@@ -47,7 +49,6 @@ class HeroSection extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          // Gradient overlay
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -60,8 +61,6 @@ class HeroSection extends StatelessWidget {
               ),
             ),
           ),
-
-          // Main content
           Center(
             child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(
@@ -130,7 +129,7 @@ class HeroSection extends StatelessWidget {
                           .moveY(begin: 30, end: 0),
                       SizedBox(height: isDesktop ? 16 : 12),
                       Text(
-                        'Flutter Developer & Computer Science Enthusiast',
+                        'Fullstack Flutter Developer',
                         style: theme.textTheme.titleLarge?.copyWith(
                           color: colorScheme.onSurface.withOpacity(0.8),
                           fontWeight: FontWeight.w500,
@@ -150,7 +149,6 @@ class HeroSection extends StatelessWidget {
                       LayoutBuilder(
                         builder: (context, constraints) {
                           if (constraints.maxWidth >= 500) {
-                            // Desktop and tablet layout - buttons in a row
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -160,7 +158,6 @@ class HeroSection extends StatelessWidget {
                               ],
                             );
                           } else {
-                            // Mobile layout - buttons in a column
                             return Column(
                               children: [
                                 _buildExploreButton(context, isDesktop),
@@ -171,14 +168,14 @@ class HeroSection extends StatelessWidget {
                           }
                         },
                       ),
+                      SizedBox(height: isDesktop ? 40 : 32),
+                      _buildSocialLinks(context, isDesktop),
                     ],
                   ),
                 ),
               ),
             ),
           ),
-
-          // Haku animation for desktop and tablet
           if (isDesktop || isTablet)
             const Positioned(
               top: 50,
@@ -243,5 +240,76 @@ class HeroSection extends StatelessWidget {
         .animate()
         .fadeIn(duration: 600.ms, delay: 1400.ms)
         .scale(begin: const Offset(0.8, 0.8));
+  }
+
+  Widget _buildSocialLinks(BuildContext context, bool isDesktop) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    final socialLinks = [
+      {
+        'icon': Icons.discord,
+        'url': 'https://discordapp.com/users/579322519098621980',
+        'tooltip': 'Discord',
+        Color: const Color(0xFF7289DA),
+      },
+      {
+        'icon': Icons.email,
+        'url': 'mailto:dyarialitaher03@gmail.com',
+        'tooltip': 'Email',
+        Color: const Color.fromARGB(255, 199, 22, 16),
+      },
+      {
+        'icon': SimpleIcons.github,
+        'url': 'https://github.com/linGREEDO',
+        'tooltip': 'GitHub',
+        Color: Theme.of(context).colorScheme.onSurface,
+      },
+      {
+        'icon': SimpleIcons.linkedin,
+        'url': 'https://www.linkedin.com/in/dyari-ali-tahir-b005352b5/',
+        'tooltip': 'LinkedIn',
+        Color: const Color(0xFF0a66c2),
+      },
+      {
+        'icon': Icons.phone,
+        'url': 'https://wa.me/9647508959395',
+        'tooltip': 'WhatsApp',
+        Color: const Color(0xFF25d366),
+      },
+    ];
+
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: isDesktop ? 16 : 12,
+      runSpacing: isDesktop ? 16 : 12,
+      children: socialLinks.map((link) {
+        return Tooltip(
+          message: link['tooltip'] as String,
+          child: InkWell(
+            onTap: () => Launcher.launchURL(link['url'] as String),
+            borderRadius: BorderRadius.circular(12),
+            child: Container(
+              padding: EdgeInsets.all(isDesktop ? 12 : 10),
+              decoration: BoxDecoration(
+                color: colorScheme.surfaceContainer.withOpacity(0.6),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: colorScheme.outlineVariant.withOpacity(0.2),
+                ),
+              ),
+              child: Icon(
+                link['icon'] as IconData,
+                color: link[Color] as Color,
+                size: isDesktop ? 24 : 20,
+              ),
+            ),
+          ),
+        )
+            .animate()
+            .fadeIn(duration: 600.ms, delay: 1600.ms)
+            .scale(begin: const Offset(0.8, 0.8));
+      }).toList(),
+    );
   }
 }

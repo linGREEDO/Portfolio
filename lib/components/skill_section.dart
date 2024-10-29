@@ -21,10 +21,11 @@ class SkillSection extends StatelessWidget {
       key: scrollKey,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: const AssetImage('assets/images/ghibli_landscape.jpg'),
+          image: const AssetImage(
+              'assets/images/tumblr_eccb7edddaba09d76503723dd331b882_98fee8c0_540.webp'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
-            colorScheme.shadow.withOpacity(0.3),
+            colorScheme.shadow.withOpacity(0.1),
             BlendMode.darken,
           ),
         ),

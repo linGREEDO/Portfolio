@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
 
     final ThemeData themeData = ThemeData(
       colorScheme: colorScheme,
-      fontFamily: 'Ghibli', // You'll need to add this font to your pubspec.yaml
+      fontFamily: 'Ghibli',
       textTheme: TextTheme(
         headlineLarge: TextStyle(
             fontSize: 32,

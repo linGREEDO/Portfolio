@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lin_portfolio/components/about_me.dart';
-import 'package:lin_portfolio/components/contact_section.dart';
 import 'package:lin_portfolio/components/hero_section.dart';
 import 'package:lin_portfolio/components/skill_section.dart';
 
@@ -21,7 +20,6 @@ class MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   final GlobalKey _aboutMeKey = GlobalKey();
   final GlobalKey _skillsKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
-  final GlobalKey _contactKey = GlobalKey();
 
   late AnimationController _jumpController;
   late AnimationController _floatingController;
@@ -66,7 +64,6 @@ class MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 AboutMeSection(scrollKey: _aboutMeKey),
                 SkillSection(scrollKey: _skillsKey),
                 ProjectSection(scrollKey: _projectsKey),
-                ContactSection(scrollKey: _contactKey),
               ],
             ),
           ),
@@ -105,7 +102,19 @@ class MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               _buildNavButton(context, 'About', _aboutMeKey),
               _buildNavButton(context, 'Skills', _skillsKey),
               _buildNavButton(context, 'Projects', _projectsKey),
-              _buildNavButton(context, 'Contact', _contactKey),
+              IconButton(
+                onPressed: widget.toggleTheme,
+                icon: GestureDetector(
+                  onTap: widget.toggleTheme,
+                  child: Image.asset(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? 'assets/images/giphy (2).webp'
+                        : 'assets/images/soot_sprite.png',
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+              ),
             ]
           : [
               IconButton(
@@ -158,14 +167,6 @@ class MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               onTap: () {
                 Navigator.pop(context);
                 _scrollToSection(_projectsKey);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.contact_mail),
-              title: const Text('Contact'),
-              onTap: () {
-                Navigator.pop(context);
-                _scrollToSection(_contactKey);
               },
             ),
           ],

@@ -99,8 +99,8 @@ class AboutMeSection extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
             child: Image.asset(
               "assets/images/giphy (1).webp",
-              width: isDesktop ? 200 : 150,
-              height: isDesktop ? 200 : 150,
+              width: isDesktop ? 300 : 225,
+              height: isDesktop ? 300 : 225,
               fit: BoxFit.cover,
             ),
           )
@@ -154,7 +154,7 @@ class AboutMeSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Hello! I'm a passionate Computer Science student from Kurdistan, currently in my senior year at Knowledge University. My journey in the world of technology has been nothing short of exciting!",
+            "Hello! I’m a Computer Science senior student from Knowledge University in Kurdistan. With a strong foundation in technology and hands-on experience in software development, I'm excited to contribute my skills and passion to innovative projects and meaningful work.",
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: colorScheme.onSurface,
                   height: 1.5,
@@ -179,7 +179,8 @@ class AboutMeSection extends StatelessWidget {
             context,
             "🌟 Skills & Knowledge:",
             Text(
-              "I've delved into algorithms, web development principles, computer applications, Firebase, MySQL, assembly, and artificial intelligence. My broad understanding of IT keeps me curious and always learning!",
+              '''
+I’ve built a solid foundation in algorithms, web development principles, computer applications, Firebase, MySQL, assembly language, and artificial intelligence. My comprehensive IT knowledge fuels my curiosity and commitment to continuous learning, driving me to tackle challenges and stay at the forefront of technology.''',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: colorScheme.onSurface,
                     height: 1.5,

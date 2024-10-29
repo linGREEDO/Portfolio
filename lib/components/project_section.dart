@@ -23,7 +23,7 @@ class ProjectSection extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              'Magical Projects',
+              'Personal Projects',
               style: theme.textTheme.headlineLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: colorScheme.primary,
